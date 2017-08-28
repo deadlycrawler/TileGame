@@ -2,7 +2,7 @@ package Display;
 
 import javax.swing.*;
 import java.awt.*;
-
+//this class creates the main frame
 public class Display {
 
     private JFrame frame;
@@ -40,4 +40,7 @@ public class Display {
 
     }
 
+    public Canvas getCanvas() {
+        return canvas;
+    }
 }
