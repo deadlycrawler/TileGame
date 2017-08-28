@@ -2,6 +2,7 @@ package main;
 
 import Display.Display;
 import gfx.ImageLoader;
+import gfx.SpriteSheet;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -16,9 +17,8 @@ public class Game implements Runnable {
     private int width;
     private int height;
 
-    private int testx = 0;
-    private int testy = 0;
-    Integer red,green,blue=00;
+
+
 
     private Thread thread;
     private boolean running = false;
@@ -27,7 +27,9 @@ public class Game implements Runnable {
     private Graphics g;
 
 
-
+    //test
+    private BufferedImage test;
+    private SpriteSheet sheet;
 
 
     public Game(String title, int width, int height) {
@@ -41,27 +43,38 @@ public class Game implements Runnable {
     private void init() {
 
         display = new Display(title, width, height);
+        test = ImageLoader.loadImage("/textures/sprites.png");
+        sheet = new SpriteSheet(test);
 
 
     }
+
     //handles reocuring events
     private void tick() {
 
     }
+
     //handles graphic rendering
     private void render() {
 
         //buffer stregy creats the screen in memory prior to rendering on screen this is used to prevent flickering
-        bs=display.getCanvas().getBufferStrategy();
-        if(bs==null) {
+        bs = display.getCanvas().getBufferStrategy();
+        if (bs == null) {
             display.getCanvas().createBufferStrategy(3);
             return;
         }
         //g is the object that actly draws to the screen basied on the buffer stragegy frames "draw here"
         g = bs.getDrawGraphics();
         //clears the screen
-        g.clearRect(0,0,width,height);
-       //draw here
+        g.clearRect(0, 0, width, height);
+        //draw here
+
+
+
+        g.drawImage(sheet.crop(0, 0, 148, 148), 0, 0, null);
+        g.drawImage(sheet.crop(0, 149, 148, 148), 0, 148, null);
+
+
 
 
 
