@@ -1,12 +1,14 @@
 package main;
 
 import Display.Display;
+import gfx.Assets;
 import gfx.ImageLoader;
 import gfx.SpriteSheet;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.util.concurrent.TimeUnit;
 
 //this class does a lot
 
@@ -18,18 +20,11 @@ public class Game implements Runnable {
     private int height;
 
 
-
-
     private Thread thread;
     private boolean running = false;
 
     private BufferStrategy bs;
     private Graphics g;
-
-
-    //test
-    private BufferedImage test;
-    private SpriteSheet sheet;
 
 
     public Game(String title, int width, int height) {
@@ -43,9 +38,7 @@ public class Game implements Runnable {
     private void init() {
 
         display = new Display(title, width, height);
-        test = ImageLoader.loadImage("/textures/sprites.png");
-        sheet = new SpriteSheet(test);
-
+        Assets.init();
 
     }
 
@@ -68,16 +61,6 @@ public class Game implements Runnable {
         //clears the screen
         g.clearRect(0, 0, width, height);
         //draw here
-
-
-
-        g.drawImage(sheet.crop(0, 0, 148, 148), 0, 0, null);
-        g.drawImage(sheet.crop(0, 149, 148, 148), 0, 148, null);
-
-
-
-
-
 
 
         bs.show();
