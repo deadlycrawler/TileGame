@@ -41,9 +41,12 @@ public class Game implements Runnable {
         Assets.init();
 
     }
-
+        //temp
+    int x =0;
     //handles reocuring events
     private void tick() {
+        x++;
+
 
     }
 
@@ -62,7 +65,7 @@ public class Game implements Runnable {
         g.clearRect(0, 0, width, height);
         //draw here
 
-
+        g.drawImage(Assets.playerstatic1,x,10,null);
         bs.show();
         //"cleans the paint brush"
         g.dispose();
@@ -73,10 +76,39 @@ public class Game implements Runnable {
     public void run() {
 
         init();
+        //frames per second
+        int fps = 60;
+        //1billion, amount of nano seconds in a second, timePerTick is how many nano seconds per frame
+        long NanoSecondsInSecond =1000000000;
+        double timePerTick = NanoSecondsInSecond/fps;
+        double delta =0;
+        long now;
+        long lastTime = System.nanoTime();//returns the amound of time in nano seconds
+        long timer = 0;
+        int ticks =0;
+
 
         while (running) {
-            tick();
-            render();
+
+            now = System.nanoTime();
+            delta+=(now-lastTime)/timePerTick;
+            timer+=now-lastTime;
+            lastTime=now;
+
+
+            if (delta>=1) {
+                tick();
+                render();
+                ticks++;
+                delta--;
+            }
+            //prints frampes perScond into the console
+            if(timer>=NanoSecondsInSecond){
+                System.out.println("Ticks and frames: "+ticks);
+                ticks=0;
+                timer=0;
+
+            }
         }
         stop();
     }
