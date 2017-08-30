@@ -95,13 +95,13 @@ public class Game implements Runnable {
             timer+=now-lastTime;
             lastTime=now;
 
-
             if (delta>=1) {
                 tick();
                 render();
                 ticks++;
                 delta--;
             }
+
             //prints frampes perScond into the console
             if(timer>=NanoSecondsInSecond){
                 System.out.println("Ticks and frames: "+ticks);
