@@ -2,6 +2,7 @@ package main;
 
 import Display.Display;
 import gfx.Assets;
+import input.KeyManager;
 import states.GameState;
 import states.MenuState;
 import states.State;
@@ -25,9 +26,12 @@ public class Game implements Runnable {
     private BufferStrategy bs;
     private Graphics g;
 
-
+    //states
     private State gameState;
     private State menuState;
+
+    //input
+    private KeyManager keyManager = new KeyManager();
 
     public Game(String title, int width, int height) {
         this.title = title;
@@ -40,20 +44,19 @@ public class Game implements Runnable {
     private void init() {
 
         display = new Display(title, width, height);
+        display.getFrame().addKeyListener(keyManager);
         Assets.init();
 
-        gameState = new GameState();
-        menuState = new MenuState();
+        gameState = new GameState(this);
+        menuState = new MenuState(this);
         State.setState(gameState);
-
-
-
 
 
     }
 
     //handles reocuring events
     private void tick() {
+        keyManager.tick();
         if (State.getCurrentState() != null) {
             State.getCurrentState().tick();
         }
@@ -76,9 +79,7 @@ public class Game implements Runnable {
         g.clearRect(0, 0, width, height);
         //draw here
 
-        if(State.getCurrentState()!=null)State.getCurrentState().render(g);
-
-
+        if (State.getCurrentState() != null) State.getCurrentState().render(g);
 
 
         bs.show();
@@ -126,6 +127,11 @@ public class Game implements Runnable {
             }
         }
         stop();
+    }
+
+    public KeyManager getKeyManager() {
+
+        return keyManager;
     }
 
 

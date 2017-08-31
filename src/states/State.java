@@ -17,7 +17,7 @@ public abstract class State {
     public static State getCurrentState() {
         return currentState;
     }
-
+    //class
     protected Game game;
 
     public State(Game game) {
