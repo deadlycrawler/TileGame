@@ -20,11 +20,18 @@ public class Assets {
     //stone tiles
     public static BufferedImage stone1;
 
+    //sand tiles
+    public static BufferedImage sand1;
+
     //grass tiles
     public static BufferedImage grass1,grass1_shadow,grass2,grass2_shadow,grass3,grass3_shadow,grass4,grass4_shadow;
 
     //dirt tiles
     public static BufferedImage dirt1;
+
+    //brick
+    public static BufferedImage brick1;
+
 
     public static void init(){
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/link.png"));
@@ -37,15 +44,12 @@ public class Assets {
         playerstatic3 = sheet.crop(PlayerSartingX+(PlayerOffsetX*2),15, PlayerWidth, PlayerHeight);
 
 
-
-
-
         //tile sprites
         //stoneWall
         stone1 = tiles.crop(TILE_STARTING_X,TILE_sTARTING_Y,TILE_WIDTH,TILE_HEIGHT);
 
-
-
+        //sand
+        sand1 = tiles.crop(TILE_STARTING_X,TILE_sTARTING_Y+TILE_OFFSET*1,TILE_WIDTH,TILE_HEIGHT);
 
         //grass
         grass1 = tiles.crop(TILE_STARTING_X,TILE_sTARTING_Y+TILE_OFFSET*2,TILE_WIDTH,TILE_HEIGHT);
@@ -62,6 +66,10 @@ public class Assets {
         //dirt tiles
         //dirt
         dirt1 = tiles.crop(TILE_STARTING_X,TILE_sTARTING_Y+TILE_OFFSET*3,TILE_WIDTH,TILE_HEIGHT);
+
+        //brick Tiles
+        //brick
+        brick1 = tiles.crop(TILE_STARTING_X,TILE_sTARTING_Y*4,TILE_WIDTH,TILE_HEIGHT);
 
 
 
