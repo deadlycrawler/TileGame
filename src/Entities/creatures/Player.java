@@ -18,10 +18,19 @@ public class Player extends Creature {
 
     @Override
     public void tick() {
-        if (game.getKeyManager().up) y -= 6;
-        if (game.getKeyManager().down) y += 6;
-        if (game.getKeyManager().left) x -= 6;
-        if (game.getKeyManager().right) x += 6;
+        getInput();
+        move();
+
+    }
+
+    private void getInput(){
+        xMove =0;
+        yMove=0;
+        if(game.getKeyManager().up)yMove=-speed;
+        if (game.getKeyManager().down) yMove=speed;
+        if (game.getKeyManager().left) xMove=-speed;
+        if (game.getKeyManager().right)xMove=speed;
+
 
     }
 

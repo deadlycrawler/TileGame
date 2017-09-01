@@ -20,9 +20,23 @@ public abstract class Creature extends Entity {
         super(x, y, width, height);
         health = DEFAULT_HEALTH;
         speed = DEFAULT_SPEED;
+        xMove =0;
+        yMove =0;
+
+
+    }
+
+    public void move(){
+        x+=xMove;
+        y+=yMove;
+
+
     }
 
 
+
+
+    //GETTERS AND SETTERS
     public static int getDefaultHealth() {
         return DEFAULT_HEALTH;
     }
@@ -37,5 +51,21 @@ public abstract class Creature extends Entity {
 
     public  void setDefaultSpeed(float speed) {
         this.speed = speed;
+    }
+
+    public float getxMove() {
+        return xMove;
+    }
+
+    public void setxMove(float xMove) {
+        this.xMove = xMove;
+    }
+
+    public float getyMove() {
+        return yMove;
+    }
+
+    public void setyMove(float yMove) {
+        this.yMove = yMove;
     }
 }

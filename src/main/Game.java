@@ -79,9 +79,9 @@ public class Game implements Runnable {
         g.clearRect(0, 0, width, height);
         //draw here
 
+
+
         if (State.getCurrentState() != null) State.getCurrentState().render(g);
-
-
         bs.show();
         //"cleans the paint brush"
         g.dispose();
