@@ -64,6 +64,12 @@ public class Game implements Runnable {
 
     }
 
+    //TEMP
+
+    int Xoffset =0;
+    int Yoffset=0;
+    int sisxty4 = 64;
+
     //handles graphic rendering
     private void render() {
 
@@ -79,9 +85,9 @@ public class Game implements Runnable {
         g.clearRect(0, 0, width, height);
         //draw here
 
-
-
         if (State.getCurrentState() != null) State.getCurrentState().render(g);
+
+
         bs.show();
         //"cleans the paint brush"
         g.dispose();

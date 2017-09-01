@@ -17,8 +17,14 @@ public class Assets {
     //idle player animation
     public static BufferedImage playerstatic1,playerstatic2,playerstatic3;
 
+    //stone tiles
+    public static BufferedImage stone1;
+
     //grass tiles
-    public static BufferedImage grass1,grass1_shadow,grass2,grass2_shadow,grass3_shawdow,grass4,grass4_shadow;
+    public static BufferedImage grass1,grass1_shadow,grass2,grass2_shadow,grass3,grass3_shadow,grass4,grass4_shadow;
+
+    //dirt tiles
+    public static BufferedImage dirt1;
 
     public static void init(){
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/link.png"));
@@ -35,10 +41,29 @@ public class Assets {
 
 
         //tile sprites
+        //stoneWall
+        stone1 = tiles.crop(TILE_STARTING_X,TILE_sTARTING_Y,TILE_WIDTH,TILE_HEIGHT);
+
+
+
+
         //grass
         grass1 = tiles.crop(TILE_STARTING_X,TILE_sTARTING_Y+TILE_OFFSET*2,TILE_WIDTH,TILE_HEIGHT);
-
         grass2 = tiles.crop(TILE_STARTING_X+TILE_OFFSET*2,TILE_sTARTING_Y+TILE_OFFSET*2,TILE_WIDTH,TILE_HEIGHT);
+        grass3 = tiles.crop(TILE_STARTING_X+TILE_OFFSET*4,TILE_sTARTING_Y+TILE_OFFSET*2,TILE_WIDTH,TILE_HEIGHT);
+        grass4 = tiles.crop(TILE_STARTING_X+TILE_OFFSET*6,TILE_sTARTING_Y+TILE_OFFSET*2,TILE_WIDTH,TILE_HEIGHT);
+
+        //shadow grass
+        grass1_shadow = tiles.crop(TILE_STARTING_X+TILE_OFFSET*1,TILE_sTARTING_Y+TILE_OFFSET*2,TILE_WIDTH,TILE_HEIGHT);
+        grass2_shadow = tiles.crop(TILE_STARTING_X+TILE_OFFSET*3,TILE_sTARTING_Y+TILE_OFFSET*2,TILE_WIDTH,TILE_HEIGHT);
+        grass3_shadow = tiles.crop(TILE_STARTING_X+TILE_OFFSET*5,TILE_sTARTING_Y+TILE_OFFSET*2,TILE_WIDTH,TILE_HEIGHT);
+        grass4_shadow = tiles.crop(TILE_STARTING_X+TILE_OFFSET*7,TILE_sTARTING_Y+TILE_OFFSET*2,TILE_WIDTH,TILE_HEIGHT);
+
+        //dirt tiles
+        //dirt
+        dirt1 = tiles.crop(TILE_STARTING_X,TILE_sTARTING_Y+TILE_OFFSET*3,TILE_WIDTH,TILE_HEIGHT);
+
+
 
 
     }
