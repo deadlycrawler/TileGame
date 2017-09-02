@@ -1,6 +1,7 @@
 package states;
 
 import Entities.creatures.Player;
+import Worlds.World;
 import main.Game;
 import tiles.Tile;
 
@@ -9,17 +10,20 @@ import java.awt.*;
 public class GameState extends State {
 
     private Player player;
+    private World world;
 
 
     public GameState(Game game) {
         super(game);
 
         player = new Player(game,100,100);
+        world = new World("");
     }
 
 
     @Override
     public void tick() {
+        world.tick();
         player.tick();
     }
 
@@ -27,10 +31,8 @@ public class GameState extends State {
     //this method renders all the things
     @Override
     public void render(Graphics g) {
+        world.render(g);
         player.render(g);
-        Tile.tiles[2].render(g,0,0);
-        Tile.tiles[1].render(g,64,0);
-        Tile.tiles[0].render(g,64*2,0);
 
     }
 }
