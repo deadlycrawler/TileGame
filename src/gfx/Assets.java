@@ -69,7 +69,7 @@ public class Assets {
 
         //brick Tiles
         //brick
-        brick1 = tiles.crop(TILE_STARTING_X,TILE_sTARTING_Y*4,TILE_WIDTH,TILE_HEIGHT);
+        brick1 = tiles.crop(TILE_STARTING_X,TILE_sTARTING_Y+TILE_OFFSET*4,TILE_WIDTH,TILE_HEIGHT);
 
 
 
