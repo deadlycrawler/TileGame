@@ -2,6 +2,7 @@ package main;
 
 import Display.Display;
 import gfx.Assets;
+import gfx.GameCamera;
 import input.KeyManager;
 import states.GameState;
 import states.MenuState;
@@ -33,6 +34,11 @@ public class Game implements Runnable {
     //input
     private KeyManager keyManager = new KeyManager();
 
+
+    //Camera
+    private GameCamera gameCamera;
+
+
     public Game(String title, int width, int height) {
         this.title = title;
         this.width = width;
@@ -46,6 +52,8 @@ public class Game implements Runnable {
         display = new Display(title, width, height);
         display.getFrame().addKeyListener(keyManager);
         Assets.init();
+
+        gameCamera = new GameCamera(this, 0, 0);
 
         gameState = new GameState(this);
         menuState = new MenuState(this);
@@ -66,8 +74,8 @@ public class Game implements Runnable {
 
     //TEMP
 
-    int Xoffset =0;
-    int Yoffset=0;
+    int Xoffset = 0;
+    int Yoffset = 0;
     int sisxty4 = 64;
 
     //handles graphic rendering
@@ -140,6 +148,18 @@ public class Game implements Runnable {
         return keyManager;
     }
 
+
+    public GameCamera getGameCamera() {
+        return gameCamera;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
 
     public synchronized void start() {
         if (running) return;

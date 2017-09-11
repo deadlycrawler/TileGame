@@ -7,12 +7,11 @@ import java.awt.*;
 
 public class Player extends Creature {
 
-    private Game game;
 
     public Player(Game game, float x, float y) {
         //the size entered
-        super(x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT);
-        this.game = game;
+        super(game, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT);
+
     }
 
 
@@ -20,16 +19,17 @@ public class Player extends Creature {
     public void tick() {
         getInput();
         move();
+        game.getGameCamera().centerOnEntity(this);
 
     }
 
-    private void getInput(){
-        xMove =0;
-        yMove=0;
-        if(game.getKeyManager().up)yMove=-speed;
-        if (game.getKeyManager().down) yMove=speed;
-        if (game.getKeyManager().left) xMove=-speed;
-        if (game.getKeyManager().right)xMove=speed;
+    private void getInput() {
+        xMove = 0;
+        yMove = 0;
+        if (game.getKeyManager().up) yMove = -speed;
+        if (game.getKeyManager().down) yMove = speed;
+        if (game.getKeyManager().left) xMove = -speed;
+        if (game.getKeyManager().right) xMove = speed;
 
 
     }
@@ -37,7 +37,7 @@ public class Player extends Creature {
     @Override
     public void render(Graphics g) {
 
-        g.drawImage(Assets.playerstatic1, (int) x, (int) y, width, height, null);
+        g.drawImage(Assets.playerstatic1, (int) (x-game.getGameCamera().getxOffset()), (int) (y-game.getGameCamera().getyOffset()), width, height, null);
 
     }
 }
