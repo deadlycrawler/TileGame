@@ -32,9 +32,15 @@ public class World {
     }
 
     public void render(Graphics g) {
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
 
+        int xStart = (int) Math.max(0,game.getGameCamera().getxOffset()/Tile.TILE_WIDTH);
+        int xEnd = (int) Math.min(width,(game.getGameCamera().getxOffset()+game.getWidth())/Tile.TILE_WIDTH+1);
+        int yStart = (int) Math.max(0,game.getGameCamera().getyOffset()/Tile.TILE_hEIGHT);
+        int yEnd = (int) Math.min(height,(game.getGameCamera().getyOffset()+game.getHeight())/Tile.TILE_hEIGHT+1);
+
+
+        for (int y = yStart; y < yEnd; y++) {
+            for (int x = xStart; x < xEnd; x++) {
                 getTile(x, y).render(g, (int) (x * Tile.TILE_WIDTH - game.getGameCamera().getxOffset()), (int) (y * Tile.TILE_hEIGHT - game.getGameCamera().getyOffset()));
 
 
@@ -60,7 +66,7 @@ public class World {
         tiles = new int[width][height];
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                //+4 is due to the first 4 world numbers being used for player potioin
+                //+4 is due to the first 4 world numbers being used for player position
                 tiles[x][y] = Utils.parseInt(tokens[x + y * width + 4]);
             }
         }
