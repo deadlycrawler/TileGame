@@ -1,6 +1,7 @@
 package Worlds;
 
 import main.Game;
+import main.Handler;
 import tiles.Tile;
 import utils.Utils;
 
@@ -8,7 +9,7 @@ import java.awt.*;
 
 public class World {
 
-    private Game game;
+    private Handler handler;
 
     //reference width and height refer to the the number of tiles for the x,y of a square grid type world
     private int width, height;
@@ -19,9 +20,9 @@ public class World {
     private int[][] tiles;
 
 
-    public World(Game game, String path) {
+    public World(Handler handler, String path) {
         loadWOrld(path);
-        this.game = game;
+        this.handler = handler;
 
 
     }
@@ -33,15 +34,15 @@ public class World {
 
     public void render(Graphics g) {
 
-        int xStart = (int) Math.max(0,game.getGameCamera().getxOffset()/Tile.TILE_WIDTH);
-        int xEnd = (int) Math.min(width,(game.getGameCamera().getxOffset()+game.getWidth())/Tile.TILE_WIDTH+1);
-        int yStart = (int) Math.max(0,game.getGameCamera().getyOffset()/Tile.TILE_hEIGHT);
-        int yEnd = (int) Math.min(height,(game.getGameCamera().getyOffset()+game.getHeight())/Tile.TILE_hEIGHT+1);
+        int xStart = (int) Math.max(0,handler.getGameCamera().getxOffset()/Tile.TILE_WIDTH);
+        int xEnd = (int) Math.min(width,(handler.getGameCamera().getxOffset()+handler.getWidth())/Tile.TILE_WIDTH+1);
+        int yStart = (int) Math.max(0,handler.getGameCamera().getyOffset()/Tile.TILE_hEIGHT);
+        int yEnd = (int) Math.min(height,(handler.getGameCamera().getyOffset()+handler.getHeight())/Tile.TILE_hEIGHT+1);
 
 
         for (int y = yStart; y < yEnd; y++) {
             for (int x = xStart; x < xEnd; x++) {
-                getTile(x, y).render(g, (int) (x * Tile.TILE_WIDTH - game.getGameCamera().getxOffset()), (int) (y * Tile.TILE_hEIGHT - game.getGameCamera().getyOffset()));
+                getTile(x, y).render(g, (int) (x * Tile.TILE_WIDTH - handler.getGameCamera().getxOffset()), (int) (y * Tile.TILE_hEIGHT - handler.getGameCamera().getyOffset()));
 
 
             }

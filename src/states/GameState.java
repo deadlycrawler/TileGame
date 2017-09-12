@@ -3,6 +3,7 @@ package states;
 import Entities.creatures.Player;
 import Worlds.World;
 import main.Game;
+import main.Handler;
 import tiles.Tile;
 
 import java.awt.*;
@@ -13,12 +14,13 @@ public class GameState extends State {
     private World world;
 
 
-    public GameState(Game game) {
-        super(game);
+    public GameState(Handler handler) {
+        super(handler);
 
-        player = new Player(game,100,100);
-        world = new World(game,"res/worlds/world1.txt");
 
+        world = new World(handler,"res/worlds/world1.txt");
+        handler.setWorld(world);
+        player = new Player(handler,100,100);
     }
 
 
