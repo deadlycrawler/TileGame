@@ -10,6 +10,7 @@ public abstract class Entity {
     protected Handler handler;
     protected float x, y;
     protected int width, height;
+    protected Rectangle bounds;
 
     public Entity(Handler handler, float x, float y, int width, int height) {
 
@@ -19,11 +20,17 @@ public abstract class Entity {
         this.width = width;
         this.height = height;
 
+        bounds=new Rectangle(0,0,width,height);
+
     }
 
     public abstract void tick();
 
     public abstract void render(Graphics g);
+
+
+
+    //getters and setters
 
     public void setX(float x) {
         this.x = x;

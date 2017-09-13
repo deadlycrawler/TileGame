@@ -8,7 +8,7 @@ public class Assets {
     //row 1 starts at y15
 
 
-    private static final int PlayerWidth = 90, PlayerHeight =115,PlayerOffsetX=120,PlayerSartingX=10;
+    private static final int PlayerWidth = 90, PlayerHeight =115,PlayerOffsetX=120,PlayerSartingX=10,PlayerStartingY=15;
     private static final int TILE_WIDTH=64,TILE_HEIGHT=64,TILE_OFFSET=64,TILE_STARTING_X=0,TILE_sTARTING_Y=0;
 
 
@@ -39,9 +39,9 @@ public class Assets {
 
         //player sprites
         //player idle
-        playerstatic1 = sheet.crop(PlayerSartingX,15, PlayerWidth, PlayerHeight);
-        playerstatic2 = sheet.crop(PlayerSartingX+PlayerOffsetX,15, PlayerWidth, PlayerHeight);
-        playerstatic3 = sheet.crop(PlayerSartingX+(PlayerOffsetX*2),15, PlayerWidth, PlayerHeight);
+        playerstatic1 = sheet.crop(PlayerSartingX,PlayerStartingY, PlayerWidth, PlayerHeight);
+        playerstatic2 = sheet.crop(PlayerSartingX+PlayerOffsetX,PlayerStartingY, PlayerWidth, PlayerHeight);
+        playerstatic3 = sheet.crop(PlayerSartingX+(PlayerOffsetX*2),PlayerStartingY, PlayerWidth, PlayerHeight);
 
 
         //tile sprites

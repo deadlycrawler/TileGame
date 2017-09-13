@@ -13,6 +13,15 @@ public class Player extends Creature {
         //the size entered
         super(handler, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT);
 
+
+        //this sets the parameters for the bounding box
+        //starting position of the bounding box
+        bounds.x = 15;
+        bounds.y = 70;
+        //size of the bounding box
+        bounds.width = 60;
+        bounds.height = 45;
+
     }
 
 
@@ -38,7 +47,10 @@ public class Player extends Creature {
     @Override
     public void render(Graphics g) {
 
-        g.drawImage(Assets.playerstatic1, (int) (x-handler.getGameCamera().getxOffset()), (int) (y-handler.getGameCamera().getyOffset()), width, height, null);
+        g.drawImage(Assets.playerstatic1, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
 
+        //test code to draw a bounding box around the players colizion box
+//        g.setColor(Color.red);
+//        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y - handler.getGameCamera().getyOffset()), bounds.width, bounds.height);
     }
 }
